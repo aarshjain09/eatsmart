@@ -1,0 +1,203 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-cream-soft: var(--cream-soft);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-olive: var(--olive);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-leaf: var(--leaf);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Dancing Script", cursive;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 10px 40px -12px color-mix(in oklab, var(--forest-deep) 18%, transparent);
+  --shadow-card: 0 4px 20px -6px color-mix(in oklab, var(--forest-deep) 10%, transparent);
+
+  --gradient-hero: radial-gradient(circle at 20% 10%, color-mix(in oklab, var(--sage-light) 60%, transparent), transparent 60%),
+                   radial-gradient(circle at 90% 90%, color-mix(in oklab, var(--sage-light) 50%, transparent), transparent 55%);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Brand palette */
+  --cream: oklch(0.977 0.015 92);
+  --cream-soft: oklch(0.955 0.020 92);
+  --sage-light: oklch(0.925 0.035 130);
+  --sage: oklch(0.78 0.06 135);
+  --olive: oklch(0.58 0.10 130);
+  --leaf: oklch(0.55 0.14 140);
+  --forest: oklch(0.38 0.08 145);
+  --forest-deep: oklch(0.26 0.06 145);
+
+  --background: var(--cream);
+  --foreground: oklch(0.22 0.03 145);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+
+  --primary: var(--forest);
+  --primary-foreground: var(--cream);
+  --secondary: var(--sage-light);
+  --secondary-foreground: var(--forest-deep);
+  --muted: var(--cream-soft);
+  --muted-foreground: oklch(0.45 0.02 145);
+  --accent: var(--sage-light);
+  --accent-foreground: var(--forest-deep);
+  --destructive: oklch(0.55 0.20 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.02 130);
+  --input: oklch(0.90 0.02 130);
+  --ring: var(--leaf);
+
+  --chart-1: var(--leaf);
+  --chart-2: var(--olive);
+  --chart-3: var(--forest);
+  --chart-4: var(--sage);
+  --chart-5: var(--forest-deep);
+
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--forest);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--sage-light);
+  --sidebar-accent-foreground: var(--forest-deep);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+.dark {
+  --background: var(--forest-deep);
+  --foreground: var(--cream);
+  --card: oklch(0.30 0.05 145);
+  --card-foreground: var(--cream);
+  --popover: oklch(0.30 0.05 145);
+  --popover-foreground: var(--cream);
+  --primary: var(--sage-light);
+  --primary-foreground: var(--forest-deep);
+  --secondary: oklch(0.35 0.05 145);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.35 0.05 145);
+  --muted-foreground: oklch(0.78 0.03 130);
+  --accent: oklch(0.35 0.05 145);
+  --accent-foreground: var(--cream);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--sage);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+    color: var(--forest-deep);
+  }
+  .font-script { font-family: var(--font-script); }
+  .font-serif { font-family: var(--font-serif); }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: var(--forest);
+  color: var(--cream);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-card);
+  &:hover {
+    background: var(--forest-deep);
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--forest);
+  color: var(--forest);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  &:hover {
+    background: var(--forest);
+    color: var(--cream);
+  }
+}
+
+@utility divider-leaf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--olive);
+  &::before, &::after {
+    content: "";
+    height: 1px;
+    width: 3rem;
+    background: currentColor;
+    opacity: 0.5;
+  }
+}
