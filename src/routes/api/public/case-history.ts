@@ -1,59 +1,101 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { google } from "googleapis";
 
 const HEADERS = [
-  "Timestamp","Full Name","Age","Gender","Email","Phone","City",
-  "Height (cm)","Weight (kg)","Goal","Neck (cm)","Chest (cm)","Waist (cm)","Hip (cm)",
-  "Medical Conditions","Medications",
-  "Allergies","Diet Preference","Meals per Day","Water (L/day)",
-  "Sleep (hrs)","Activity Level","Occupation","Typical Day Food",
+  "Timestamp",
+  "Full Name",
+  "Age",
+  "Gender",
+  "Email",
+  "Phone",
+  "City",
+  "Height (cm)",
+  "Weight (kg)",
+  "Goal",
+  "Neck (cm)",
+  "Chest (cm)",
+  "Waist (cm)",
+  "Hip (cm)",
+  "Medical Conditions",
+  "Medications",
+  "Allergies",
+  "Diet Preference",
+  "Meals per Day",
+  "Water (L/day)",
+  "Sleep (hrs)",
+  "Activity Level",
+  "Occupation",
+  "Typical Day Food",
   "Notes",
 ];
 
-async function callSheets(path: string, init: RequestInit) {
-  const key = process.env.LOVABLE_API_KEY;
-  const connKey = process.env.GOOGLE_SHEETS_API_KEY;
-  if (!key || !connKey) throw new Error("Google Sheets not configured");
-  const res = await fetch(`https://connector-gateway.lovable.dev/google_sheets/v4${path}`, {
-    ...init,
-    headers: {
-      Authorization: `Bearer ${key}`,
-      "X-Connection-Api-Key": connKey,
-      "Content-Type": "application/json",
-      ...(init.headers ?? {}),
-    },
-  });
-  return res;
-}
+const auth = new google.auth.GoogleAuth({
+  credentials: {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  },
+  scopes: [
+    "https://www.googleapis.com/auth/spreadsheets",
+  ],
+});
+
+const sheets = google.sheets({
+  version: "v4",
+  auth,
+});
 
 export const Route = createFileRoute("/api/public/case-history")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const sheetId = process.env.CASE_HISTORY_SHEET_ID;
-        if (!sheetId) {
+        const spreadsheetId = process.env.CASE_HISTORY_SHEET_ID;
+
+        if (!spreadsheetId) {
           return Response.json(
-            { error: "Sheet not configured. Set CASE_HISTORY_SHEET_ID." },
-            { status: 500 },
+            {
+              error: "CASE_HISTORY_SHEET_ID is missing",
+            },
+            {
+              status: 500,
+            }
           );
         }
 
         let body: Record<string, unknown>;
-        try { body = await request.json(); } catch {
-          return Response.json({ error: "Invalid JSON" }, { status: 400 });
+
+        try {
+          body = await request.json();
+        } catch {
+          return Response.json(
+            {
+              error: "Invalid JSON",
+            },
+            {
+              status: 400,
+            }
+          );
         }
 
-        // Basic validation + length caps
         const s = (v: unknown, max = 500) =>
           typeof v === "string" ? v.trim().slice(0, max) : "";
+
         const n = (v: unknown) => {
-          const x = Number(v);
-          return Number.isFinite(x) ? String(x) : "";
+          const num = Number(v);
+          return Number.isFinite(num) ? String(num) : "";
         };
 
         const fullName = s(body.fullName, 120);
         const phone = s(body.phone, 40);
+
         if (!fullName || !phone) {
-          return Response.json({ error: "Name and phone are required." }, { status: 400 });
+          return Response.json(
+            {
+              error: "Name and phone are required.",
+            },
+            {
+              status: 400,
+            }
+          );
         }
 
         const row = [
@@ -85,48 +127,60 @@ export const Route = createFileRoute("/api/public/case-history")({
         ];
 
         try {
-          // Discover the first sheet/tab name (don't assume "Sheet1")
-          const metaRes = await callSheets(
-            `/spreadsheets/${sheetId}?fields=sheets.properties.title`,
-            { method: "GET" },
-          );
-          if (!metaRes.ok) {
-            const text = await metaRes.text();
-            console.error("Sheets metadata failed", metaRes.status, text);
-            return Response.json({ error: "Could not save. Please try WhatsApp." }, { status: 502 });
-          }
-          const meta = (await metaRes.json()) as { sheets?: { properties?: { title?: string } }[] };
-          const tab = meta.sheets?.[0]?.properties?.title || "Sheet1";
-          const range = `${tab}!A1:Y1`;
+          // Find first sheet name
+          const metadata = await sheets.spreadsheets.get({
+            spreadsheetId,
+            fields: "sheets.properties.title",
+          });
 
-          // Ensure header row exists (idempotent — appends only if empty)
-          const headerRes = await callSheets(
-            `/spreadsheets/${sheetId}/values/${range}`,
-            { method: "GET" },
-          );
-          if (headerRes.ok) {
-            const j = (await headerRes.json()) as { values?: string[][] };
-            if (!j.values || j.values.length === 0) {
-              await callSheets(
-                `/spreadsheets/${sheetId}/values/${range}?valueInputOption=RAW`,
-                { method: "PUT", body: JSON.stringify({ values: [HEADERS] }) },
-              );
-            }
+          const sheetName =
+            metadata.data.sheets?.[0]?.properties?.title || "Sheet1";
+
+          // Check if headers exist
+          const existing = await sheets.spreadsheets.values.get({
+            spreadsheetId,
+            range: `${sheetName}!A1:Y1`,
+          });
+
+          if (
+            !existing.data.values ||
+            existing.data.values.length === 0
+          ) {
+            await sheets.spreadsheets.values.update({
+              spreadsheetId,
+              range: `${sheetName}!A1:Y1`,
+              valueInputOption: "RAW",
+              requestBody: {
+                values: [HEADERS],
+              },
+            });
           }
 
-          const appendRes = await callSheets(
-            `/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
-            { method: "POST", body: JSON.stringify({ values: [row] }) },
-          );
-          if (!appendRes.ok) {
-            const text = await appendRes.text();
-            console.error("Sheets append failed", appendRes.status, text);
-            return Response.json({ error: "Could not save. Please try WhatsApp." }, { status: 502 });
-          }
-          return Response.json({ ok: true });
+          // Append data
+          await sheets.spreadsheets.values.append({
+            spreadsheetId,
+            range: `${sheetName}!A:Y`,
+            valueInputOption: "USER_ENTERED",
+            insertDataOption: "INSERT_ROWS",
+            requestBody: {
+              values: [row],
+            },
+          });
+
+          return Response.json({
+            success: true,
+          });
         } catch (err) {
           console.error(err);
-          return Response.json({ error: "Server error" }, { status: 500 });
+
+          return Response.json(
+            {
+              error: "Failed to write to Google Sheet",
+            },
+            {
+              status: 500,
+            }
+          );
         }
       },
     },
