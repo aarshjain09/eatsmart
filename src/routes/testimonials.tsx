@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LeafDivider } from "@/components/LeafDivider";
-import poojaImg from "@/assets/testimonials/pooja.jpeg.asset.json";
-import reenaImg from "@/assets/testimonials/reena.jpeg.asset.json";
-import azraImg from "@/assets/testimonials/azra.jpeg.asset.json";
-import mitaliImg from "@/assets/testimonials/mitali.jpeg.asset.json";
-import shilpaImg from "@/assets/testimonials/shilpa.jpeg.asset.json";
-import tearsImg from "@/assets/testimonials/tears.jpeg.asset.json";
-import shwetaImg from "@/assets/testimonials/shweta.jpeg.asset.json";
-import kavitaImg from "@/assets/testimonials/kavita.jpeg.asset.json";
+import poojaImg from "@/assets/testimonials/pooja.jpeg";
+import reenaImg from "@/assets/testimonials/reena.jpeg";
+import azraImg from "@/assets/testimonials/azra.jpeg";
+import mitaliImg from "@/assets/testimonials/mitali.jpeg";
+import shilpaImg from "@/assets/testimonials/shilpa.jpeg";
+import tearsImg from "@/assets/testimonials/tears.jpeg";
+import shwetaImg from "@/assets/testimonials/shweta.jpeg";
+import kavitaImg from "@/assets/testimonials/kavita.jpeg";
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
@@ -22,14 +22,14 @@ export const Route = createFileRoute("/testimonials")({
 });
 
 const written = [
-  { name: "Pooja Barodiya", tag: "Weight loss & gut health", src: poojaImg.url },
-  { name: "Reena Doshi", tag: "Menopause · Sugar · Cholesterol", src: reenaImg.url },
-  { name: "Azra", tag: "10 kg weight loss", src: azraImg.url },
-  { name: "Dr Mitali (Mumbai)", tag: "Gut health · Bloating", src: mitaliImg.url },
-  { name: "Shilpa", tag: "Weight loss without starvation", src: shilpaImg.url },
-  { name: "Happy client", tag: "Post-pregnancy · 65.7 kg", src: tearsImg.url },
-  { name: "Shweta (Mumbai)", tag: "Lifestyle transformation", src: shwetaImg.url },
-  { name: "Kavita Joshi", tag: "13 kg weight loss", src: kavitaImg.url },
+  { name: "Pooja Barodiya", tag: "Weight loss & gut health", src: poojaImg },
+  { name: "Reena Doshi", tag: "Menopause · Sugar · Cholesterol", src: reenaImg },
+  { name: "Azra", tag: "10 kg weight loss", src: azraImg },
+  { name: "Dr Mitali (Mumbai)", tag: "Gut health · Bloating", src: mitaliImg },
+  { name: "Shilpa", tag: "Weight loss without starvation", src: shilpaImg },
+  { name: "Happy client", tag: "Post-pregnancy · 65.7 kg", src: tearsImg },
+  { name: "Shweta (Mumbai)", tag: "Lifestyle transformation", src: shwetaImg },
+  { name: "Kavita Joshi", tag: "13 kg weight loss", src: kavitaImg},
 ];
 
 

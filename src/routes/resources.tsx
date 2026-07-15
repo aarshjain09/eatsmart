@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { LeafDivider } from "@/components/LeafDivider";
-import snacking from "@/assets/knowledge/AF49EA64.png.asset.json";
-import plate from "@/assets/knowledge/D6032446.png.asset.json";
-import hydrate from "@/assets/knowledge/F1591858.png.asset.json";
-import stress from "@/assets/knowledge/4E469B8B.png.asset.json";
-import sleep from "@/assets/knowledge/F629335C.png.asset.json";
-import meal from "@/assets/knowledge/FDD3AF7F.png.asset.json";
-import portion from "@/assets/knowledge/738F375C.png.asset.json";
-import fiber from "@/assets/knowledge/3983174F.png.asset.json";
-import water from "@/assets/knowledge/61872A75.png.asset.json";
+import snacking from "@/assets/knowledge/image10.png";
+import plate from "@/assets/knowledge/image11.png";
+import hydrate from "@/assets/knowledge/image12.png";
+import stress from "@/assets/knowledge/image0.png";
+import sleep from "@/assets/knowledge/image1.png";
+import meal from "@/assets/knowledge/image2.png";
+import portion from "@/assets/knowledge/image3.png";
+import fiber from "@/assets/knowledge/image4.png";
+import water from "@/assets/knowledge/image5.png";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/resources")({
       { name: "description", content: "Practical wellness guides plus healthy recipes and beginner-friendly workout videos handpicked by Dr. Pinal Jain." },
       { property: "og:title", content: "Learn — Guides, Recipes & Workouts | Eat Smart" },
       { property: "og:description", content: "Free wellness guides, meal recipes and workout plans." },
-      { property: "og:image", content: plate.url },
+      { property: "og:image", content: plate },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: plate.url },
+      { name: "twitter:image", content: plate },
     ],
   }),
   component: Resources,
@@ -84,7 +84,7 @@ export function Resources() {
             >
               <div className="aspect-square overflow-hidden bg-sage-light/40">
                 <img
-                  src={g.img.url}
+                  src={g.img}
                   alt={g.title}
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"

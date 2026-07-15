@@ -3,10 +3,10 @@ import { LeafDivider } from "@/components/LeafDivider";
 import heroBowl from "@/assets/hero-bowl.jpg";
 import smoothie from "@/assets/smoothie.jpg";
 import { SITE, whatsappLink } from "@/lib/site";
-import poojaImg from "@/assets/testimonials/pooja.jpeg.asset.json";
-import azraImg from "@/assets/testimonials/azra.jpeg.asset.json";
-import kavitaImg from "@/assets/testimonials/kavita.jpeg.asset.json";
-import shilpaImg from "@/assets/testimonials/shilpa.jpeg.asset.json";
+import poojaImg from "@/assets/testimonials/pooja.jpeg";
+import azraImg from "@/assets/testimonials/azra.jpeg";
+import kavitaImg from "@/assets/testimonials/kavita.jpeg";
+import shilpaImg from "@/assets/testimonials/shilpa.jpeg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -277,10 +277,10 @@ function Index() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
             {[
-              { name: "Pooja Barodiya", tag: "Weight loss & gut health", src: poojaImg.url },
-              { name: "Azra", tag: "10 kg weight loss", src: azraImg.url },
-              { name: "Shilpa", tag: "No starvation", src: shilpaImg.url },
-              { name: "Kavita Joshi", tag: "13 kg weight loss", src: kavitaImg.url },
+              { name: "Pooja Barodiya", tag: "Weight loss & gut health", src: poojaImg },
+              { name: "Azra", tag: "10 kg weight loss", src: azraImg },
+              { name: "Shilpa", tag: "No starvation", src: shilpaImg },
+              { name: "Kavita Joshi", tag: "13 kg weight loss", src: kavitaImg },
             ].map((t) => (
               <figure key={t.name} className="rounded-2xl overflow-hidden bg-card shadow-card border border-border/60 flex flex-col">
                 <a href={t.src} target="_blank" rel="noopener noreferrer" className="block bg-forest-deep">
