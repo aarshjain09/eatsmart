@@ -140,35 +140,7 @@ function DailyUpdate() {
           </div>
         </Section>
 
-        <Section title="Photo (optional)">
-          <p className="text-sm text-muted-foreground mb-3">
-            Attach a progress photo, meal picture, or a screenshot of your step count. Uploaded to Dr. Pinal's private Drive.
-          </p>
-          <div className="flex flex-wrap items-start gap-4">
-            <label className="btn-outline cursor-pointer">
-              {image ? "Change photo" : "Choose photo"}
-              <input
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => onPickImage(e.target.files?.[0] ?? null)}
-              />
-            </label>
-            {image && (
-              <button type="button" onClick={() => onPickImage(null)} className="text-sm text-muted-foreground underline">
-                Remove
-              </button>
-            )}
-            {preview && (
-              <figure className="rounded-2xl overflow-hidden border border-border/60 bg-cream-soft max-w-[220px]">
-                <img src={preview} alt="Selected preview" className="w-full h-auto" />
-                <figcaption className="text-xs text-muted-foreground px-3 py-2 text-center truncate">
-                  {image?.name}
-                </figcaption>
-              </figure>
-            )}
-          </div>
-        </Section>
+       
 
         {error && (
           <div className="rounded-2xl bg-destructive/10 text-destructive px-4 py-3 text-sm">

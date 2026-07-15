@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { LeafDivider } from "@/components/LeafDivider";
 import { whatsappLink } from "@/lib/site";
-import measurementGuide from "@/assets/measurement-guide.jpeg.asset.json";
+import measurementGuide from "@/assets/measurement-guide.jpeg";
 
 
 export const Route = createFileRoute("/case-history")({
@@ -145,7 +145,7 @@ function CaseHistory() {
             </div>
             <figure className="rounded-2xl overflow-hidden border border-border/60 bg-cream-soft">
               <img
-                src={measurementGuide.url}
+                src={measurementGuide}
                 alt="How to measure your waist and hips with a soft tape measure"
                 className="w-full h-auto"
                 loading="lazy"

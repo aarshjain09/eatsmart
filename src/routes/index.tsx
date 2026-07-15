@@ -19,7 +19,12 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
+const reels = [
+  { url: "https://www.instagram.com/p/DaNzNkaDUTA/", caption: "Client feedback" },
+  { url: "https://www.instagram.com/p/DaKC3syDTVo/", caption: "Client feedback" },
+  { url: "https://www.instagram.com/p/DZZudGft_xJ/", caption: "Client feedback" },
+];
+const INSTA_PROFILE = "https://www.instagram.com/eatsmart.drpinaljain?igsh=am4ydTFlMThsdmg4";
 const highlights = [
   { title: "Eat Right", sub: "Feel Light" },
   { title: "Better Health", sub: "Every Day" },
@@ -99,7 +104,47 @@ function Index() {
           </div>
         </div>
       </section>
+ {/* Instagram Reels */}
+<section className="container-page py-16">
+  <div className="text-center max-w-2xl mx-auto">
+    <p className="font-script text-2xl text-olive">
+      Real journeys, real transformations
+    </p>
 
+    <h2 className="text-4xl md:text-5xl mt-1">
+      Client Videos
+    </h2>
+
+    <LeafDivider />
+
+    <p className="text-muted-foreground">
+      Watch inspiring success stories from the{" "}
+      <span className="text-leaf font-medium">
+        Eat Smart family.
+      </span>
+    </p>
+
+    <a
+      href={INSTA_PROFILE}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="btn-outline inline-flex items-center gap-2 mt-6"
+    >
+      <InstaIcon className="w-4 h-4" />
+      Follow on Instagram
+    </a>
+  </div>
+
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+    {reels.map((r) => (
+      <ReelCard
+        key={r.url}
+        url={r.url}
+        caption={r.caption}
+      />
+    ))}
+  </div>
+</section>
       {/* PROMISE STRIP */}
       <section className="container-page py-12">
         <div className="rounded-3xl bg-sage-light/60 p-6 md:p-8 grid md:grid-cols-2 gap-6 items-center">
@@ -263,53 +308,7 @@ function Index() {
         </div>
       </section>
 
-      {/* TESTIMONIALS PREVIEW */}
-      <section className="bg-cream-soft py-16">
-        <div className="container-page">
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="font-script text-2xl text-olive">Real people, real results</p>
-            <h2 className="text-4xl md:text-5xl mt-1">What clients say</h2>
-            <LeafDivider />
-            <p className="text-muted-foreground">
-              A few honest words from the <span className="text-leaf font-medium">Eat Smart family.</span>
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-            {[
-              { name: "Pooja Barodiya", tag: "Weight loss & gut health", src: poojaImg },
-              { name: "Azra", tag: "10 kg weight loss", src: azraImg },
-              { name: "Shilpa", tag: "No starvation", src: shilpaImg },
-              { name: "Kavita Joshi", tag: "13 kg weight loss", src: kavitaImg },
-            ].map((t) => (
-              <figure key={t.name} className="rounded-2xl overflow-hidden bg-card shadow-card border border-border/60 flex flex-col">
-                <a href={t.src} target="_blank" rel="noopener noreferrer" className="block bg-forest-deep">
-                  <img
-                    src={t.src}
-                    alt={`WhatsApp feedback from ${t.name}`}
-                    loading="lazy"
-                    className="w-full h-auto object-contain max-h-[320px] mx-auto"
-                  />
-                </a>
-                <figcaption className="px-4 py-3 border-t border-border/60">
-                  <p className="font-medium text-forest-deep text-sm truncate">{t.name}</p>
-                  <p className="text-xs text-leaf">{t.tag}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-
-          <blockquote className="mt-10 max-w-2xl mx-auto rounded-2xl bg-white/80 border border-border/60 p-6 text-center">
-            <p className="font-script text-2xl text-forest-deep">"Doctor is very supportive and always available for guidance. I lost weight without starving — just real food and small changes."</p>
-            <footer className="mt-3 text-sm text-muted-foreground">— Happy client</footer>
-          </blockquote>
-
-          <div className="mt-8 text-center">
-            <Link to="/testimonials" className="btn-outline">Read all stories →</Link>
-          </div>
-        </div>
-      </section>
-
+      
       {/* CTA */}
       <section className="container-page pb-16 pt-16">
 
@@ -354,5 +353,38 @@ function LeafOrnament({ className = "" }: { className?: string }) {
         ))}
       </g>
     </svg>
+  );
+}
+function InstaIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+  );
+}
+function ReelCard({ url, caption }: { url: string; caption: string }) {
+  // Instagram's oEmbed iframe — no script needed for basic embed.
+  const embedUrl = `${url.replace(/\/$/, "")}/embed/`;
+  return (
+    <article className="rounded-2xl overflow-hidden bg-card border border-border/60 shadow-card">
+      <div className="bg-forest-deep" style={{ aspectRatio: "9 / 14" }}>
+        <iframe
+          src={embedUrl}
+          title={caption}
+          loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          allowFullScreen
+          className="w-full h-full"
+        />
+      </div>
+      <div className="p-4 flex items-center justify-between">
+        <p className="font-medium text-forest-deep text-sm">{caption}</p>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="text-xs text-leaf hover:text-forest-deep">
+          Open ↗
+        </a>
+      </div>
+    </article>
   );
 }
