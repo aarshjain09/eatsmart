@@ -51,7 +51,7 @@ function Index() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
+      <head></head><section className="relative overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
         <LeafOrnament className="absolute -top-6 -left-4 w-56 opacity-70 rotate-12" />
         <div className="container-page grid lg:grid-cols-2 gap-10 items-center py-16 md:py-24">
           <div>

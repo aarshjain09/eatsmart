@@ -11,6 +11,7 @@ const nav = [
   { to: "/case-history", label: "BMI & Case History" },
   { to: "/daily-update", label: "Daily Update" },
   { to: "/testimonials", label: "Testimonials" },
+  {to:"/products",label:"Products"}
 ] as const;
 
 

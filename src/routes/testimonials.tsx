@@ -40,8 +40,6 @@ const reels = [
   { url: "https://www.instagram.com/p/DaKC3syDTVo/", caption: "Client feedback" },
   { url: "https://www.instagram.com/p/DZZudGft_xJ/", caption: "Client feedback" },
   { url: "https://www.instagram.com/p/DVWOv4mDUaU/", caption: "Client feedback" },
-  { url: "https://www.instagram.com/reel/C6H1kv7oXk-/", caption: "Sneha's 8 kg journey" },
-  { url: "https://www.instagram.com/reel/C7Yc2C_Iqe0/", caption: "PCOS reversal story" },
   {url:"https://www.instagram.com/reel/C8lh3pNiuUf/",caption:"Client feedback"},
   {url:"https://www.instagram.com/reel/DL4FUQxvh9p/",caption:"Client feedback"},
 ];

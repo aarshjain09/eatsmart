@@ -13,6 +13,7 @@ import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as ProductsRouteImport } from './routes/products'
 import { Route as DailyUpdateRouteImport } from './routes/daily-update'
 import { Route as CaseHistoryRouteImport } from './routes/case-history'
 import { Route as AboutRouteImport } from './routes/about'
@@ -38,6 +39,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DailyUpdateRoute = DailyUpdateRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/case-history': typeof CaseHistoryRoute
   '/daily-update': typeof DailyUpdateRoute
+  '/products': typeof ProductsRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/case-history': typeof CaseHistoryRoute
   '/daily-update': typeof DailyUpdateRoute
+  '/products': typeof ProductsRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/case-history': typeof CaseHistoryRoute
   '/daily-update': typeof DailyUpdateRoute
+  '/products': typeof ProductsRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-history'
     | '/daily-update'
+    | '/products'
     | '/resources'
     | '/services'
     | '/sitemap.xml'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-history'
     | '/daily-update'
+    | '/products'
     | '/resources'
     | '/services'
     | '/sitemap.xml'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-history'
     | '/daily-update'
+    | '/products'
     | '/resources'
     | '/services'
     | '/sitemap.xml'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CaseHistoryRoute: typeof CaseHistoryRoute
   DailyUpdateRoute: typeof DailyUpdateRoute
+  ProductsRoute: typeof ProductsRoute
   ResourcesRoute: typeof ResourcesRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/resources'
       fullPath: '/resources'
       preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/daily-update': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CaseHistoryRoute: CaseHistoryRoute,
   DailyUpdateRoute: DailyUpdateRoute,
+  ProductsRoute: ProductsRoute,
   ResourcesRoute: ResourcesRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
