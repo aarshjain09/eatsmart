@@ -26,6 +26,11 @@ const products = [
     image: "https://m.media-amazon.com/images/I/71Y5PGUmk8L._SL1500_.jpg",
     amazonLink: "https://link.amazon/B06GeKday",
   },
+  {
+    id: 4,
+    image: "https://m.media-amazon.com/images/I/71MI2MQrHzL._SL1500_.jpg",
+    amazonLink: "https://link.amazon/B05QQNLh1",
+  },
 
 ];
 
