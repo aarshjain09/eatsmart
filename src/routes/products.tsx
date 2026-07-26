@@ -21,6 +21,12 @@ const products = [
     image: "https://m.media-amazon.com/images/I/41q3jP1WX5L._SY300_SX300_QL70_FMwebp_.jpg",
     amazonLink: "https://www.amazon.in/True-Elements-Flax-Seeds-500g/dp/B06XW6F9QG?crid=1ZSKE9VP8C7LX&dib=eyJ2IjoiMSJ9.Q1bQkNAROLJT9i2aNeMhUcAU9EnmxY9ATWcVwSzi0zwv6n0hX4n4057U-QqH9bs2U0222KkB4ZhpWEiBGZ0rYQmRbZEwzx3wQk5t7Hzto4kVUv90ZX7pXJtWRTyl6lV14fh5cj18Wk_0bJxhD5Tx-D8f4TB7KQpTSokKyw8Xue6BL0Estu2eXYQDwv_YXR8xSOT35-gOOob8yJtL-bgChViIoeMa0pFRyCZXaVjf-EkVUpsE2FZdog0NLKzaLxGOpBigQFpexLa36CW7xoixBcAjj4-LbWepB7QXBiRO-mY.B6XP_aVU_dAThuZJPXC5TTS0jkRTGNxTSYTXDOkAa5o&dib_tag=se&keywords=true%2Belements%2Bseeds&nsdOptOutParam=true&qid=1784108553&sbo=m6DjfpMzMLDmL8pSMKX8hw%3D%3D&sprefix=true%2Belements%2Bseed%2Caps%2C279&sr=8-6&th=1&linkCode=ll2&tag=eatsmart-21&linkId=917300884923a787ff4a117c4640f7cd&ref_=as_li_ss_tl",
   },
+  {
+    id: 4,
+    image: "https://m.media-amazon.com/images/I/71Y5PGUmk8L._SL1500_.jpg",
+    amazonLink: "https://link.amazon/B06GeKday",
+  },
+
 ];
 
 function ProductsPage() {
