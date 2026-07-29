@@ -44,8 +44,8 @@ const products = [
 
 {
     id: 6,
-    image: "https://link.amazon/B02296OVj",
-    amazonLink:  "https://m.media-amazon.com/images/I/61mDvrFuiQL.jpg",
+    image: "https://m.media-amazon.com/images/I/61mDvrFuiQL.jpg",
+    amazonLink:  "https://link.amazon/B02296OVj",
   },
 
 
