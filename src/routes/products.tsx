@@ -99,6 +99,29 @@ const products = [
     image: "https://m.media-amazon.com/images/I/71mYr24r8cL._SL1500_.jpg",
     amazonLink:  "https://link.amazon/B028keKpn",
   },
+{
+    id: 14,
+    image: "https://m.media-amazon.com/images/I/71WWrZDHS-L._SL1500_.jpg",
+    amazonLink:  "https://link.amazon/B04dBg5F5",
+  },
+
+{
+    id: 15,
+    image: "https://m.media-amazon.com/images/I/71MI2MQrHzL._SL1500_.jpg",
+    amazonLink:  "https://link.amazon/B0gwDMV3c",
+  },
+
+{
+    id: 16,
+    image: "https://m.media-amazon.com/images/I/71Y5PGUmk8L._SL1500_.jpg",
+    amazonLink:  "https://link.amazon/B07oUAiWu",
+  },
+
+{
+    id: 17,
+    image: "https://m.media-amazon.com/images/I/71-FiOAzyUL._SL1500_.jpg",
+    amazonLink:  "https://link.amazon/B02k4YKLe",
+  },
 
 
 ];
