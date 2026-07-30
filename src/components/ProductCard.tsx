@@ -16,7 +16,7 @@ export default function ProductCard({
       rel="noopener noreferrer sponsored"
       className="group block overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
     >
-      <div className="aspect-square overflow-hidden bg-white p-6">
+      <div className="aspect-square overflow-hidden bg-white p-4">
         <img 
           src={image}
           alt="Amazon Product"
