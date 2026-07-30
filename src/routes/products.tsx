@@ -147,6 +147,7 @@ function ProductsPage() {
               key={product.id}
               image={product.image}
               amazonLink={product.amazonLink}
+				productName ={product.productName}
             />
           ))}
         </div>
