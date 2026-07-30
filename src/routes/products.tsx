@@ -10,6 +10,7 @@ const products = [
     id: 1,
     image: "https://m.media-amazon.com/images/I/71620dZ5esL._SL1500_.jpg",
     amazonLink:  "https://link.amazon/B0hEK59SB",
+	productName: "Pumpkin Seeds",
   },
 
 {
