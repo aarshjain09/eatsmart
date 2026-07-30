@@ -24,8 +24,11 @@ export default function ProductCard({
           className="h-full w-full object-contain transition duration-300 group-hover:scale-105"
         />
       </div>
-  <div className="border-t border-border p-5">
-     productName
+   <div className="border-t border-border p-5">
+        <h3 className="mb-4 text-center text-base font-semibold text-foreground">
+          {productName}
+        </h3>
+   </div>
       <div className="border-t border-border p-5">
         <button className="w-full rounded-xl bg-leaf py-3 text-sm font-semibold text-white transition duration-300 hover:bg-leaf/90">
           Buy on Amazon
