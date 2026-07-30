@@ -25,7 +25,7 @@ export default function ProductCard({
         />
       </div>
   <div className="border-t border-border p-5">
-       {productName} 
+     productName
       <div className="border-t border-border p-5">
         <button className="w-full rounded-xl bg-leaf py-3 text-sm font-semibold text-white transition duration-300 hover:bg-leaf/90">
           Buy on Amazon
