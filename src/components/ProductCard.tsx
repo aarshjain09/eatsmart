@@ -1,11 +1,13 @@
 type Props = {
   image: string;
-  amazonLink: string;
+  amazonLink: string
+  productName: string;
 };
 
 export default function ProductCard({
   image,
   amazonLink,
+  productName,
 }: Props) {
   return (
     <a
@@ -15,7 +17,7 @@ export default function ProductCard({
       className="group block overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
     >
       <div className="aspect-square overflow-hidden bg-white p-6">
-        <img
+        <img {productName}
           src={image}
           alt="Amazon Product"
           loading="lazy"
