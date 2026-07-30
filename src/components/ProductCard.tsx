@@ -24,7 +24,7 @@ export default function ProductCard({
           className="h-full w-full object-contain transition duration-300 group-hover:scale-105"
         />
       </div>
-<div className="p-4">
+<div className="p-2">
   <h3 className="mt-2 text-center text-base font-semibold text-forest-deep line-clamp-2 leading-6 min-h-[3rem]">
     {productName}
   </h3>
