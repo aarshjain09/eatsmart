@@ -123,8 +123,8 @@ function CaseHistory() {
 
         <Section title="Body & goals">
           <Grid>
-            <Text label="Height (cm)" type="number" value={form.heightCm} onChange={(v) => update("heightCm", v)} min={50} max={250}/>
-            <Text label="Weight (kg)" type="number" value={form.weightKg} onChange={(v) => update("weightKg", v)} min={20} max={300}/>
+            <Text label="Height (cm)" type="number" value={form.heightCm} onChange={(v) => update("heightCm", v)} min={1} max={250}/>
+            <Text label="Weight (kg)" type="number" value={form.weightKg} onChange={(v) => update("weightKg", v)} min={1} max={300}/>
             <Text label="Your main goal" value={form.goal} onChange={(v) => update("goal", v)} placeholder="e.g. Lose 8 kg, improve PCOS, more energy"/>
             <Text label="Occupation" value={form.occupation} onChange={(v) => update("occupation", v)}/>
           </Grid>
@@ -134,10 +134,10 @@ function CaseHistory() {
           <div className="grid md:grid-cols-2 gap-6 items-start">
             <div className="space-y-4">
               <Grid>
-                <Text label="Neck" type="number" value={form.neckCm} onChange={(v) => update("neckCm", v)} min={20} max={80} step={0.5}/>
-                <Text label="Chest / Bust" type="number" value={form.chestCm} onChange={(v) => update("chestCm", v)} min={40} max={200} step={0.5}/>
-                <Text label="Waist" type="number" value={form.waistCm} onChange={(v) => update("waistCm", v)} min={40} max={200} step={0.5}/>
-                <Text label="Hip" type="number" value={form.hipCm} onChange={(v) => update("hipCm", v)} min={40} max={200} step={0.5}/>
+                <Text label="Neck" type="number" value={form.neckCm} onChange={(v) => update("neckCm", v)} min={1} max={80} step={0.5}/>
+                <Text label="Chest / Bust" type="number" value={form.chestCm} onChange={(v) => update("chestCm", v)} min={1} max={200} step={0.5}/>
+                <Text label="Waist" type="number" value={form.waistCm} onChange={(v) => update("waistCm", v)} min={1} max={200} step={0.5}/>
+                <Text label="Hip" type="number" value={form.hipCm} onChange={(v) => update("hipCm", v)} min={1} max={200} step={0.5}/>
               </Grid>
               <p className="text-xs text-muted-foreground">
                 Use a soft measuring tape. Measure the waist at the narrowest part of your torso and the hip at the widest part. See the reference guide →
