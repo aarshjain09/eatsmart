@@ -118,13 +118,6 @@ function CaseHistory() {
             <Text label="Phone / WhatsApp *" value={form.phone} onChange={(v) => update("phone", v)} required maxLength={40}/>
             <Text label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} maxLength={200}/>
             <Text label="City" value={form.city} onChange={(v) => update("city", v)} maxLength={80}/>
-          </Grid>
-        </Section>
-
-        <Section title="Body & goals">
-          <Grid>
-            <Text label="Height (cm)" type="number" value={form.heightCm} onChange={(v) => update("heightCm", v)} min={1} max={250}/>
-            <Text label="Weight (kg)" type="number" value={form.weightKg} onChange={(v) => update("weightKg", v)} min={1} max={300}/>
             <Text label="Your main goal" value={form.goal} onChange={(v) => update("goal", v)} placeholder="e.g. Lose 8 kg, improve PCOS, more energy"/>
             <Text label="Occupation" value={form.occupation} onChange={(v) => update("occupation", v)}/>
           </Grid>
@@ -136,8 +129,6 @@ function CaseHistory() {
               <Grid>
                 <Text label="Height (cm)" type="number" value={form.heightCm} onChange={(v) => update("heightCm", v)} min={1} max={250}/>
                 <Text label="Weight (kg)" type="number" value={form.weightKg} onChange={(v) => update("weightKg", v)} min={1} max={300}/>
-                <Text label="Your main goal" value={form.goal} onChange={(v) => update("goal", v)} placeholder="e.g. Lose 8 kg, improve PCOS, more energy"/>
-                <Text label="Occupation" value={form.occupation} onChange={(v) => update("occupation", v)}/>
                 <Text label="Neck" type="number" value={form.neckCm} onChange={(v) => update("neckCm", v)} min={1} max={80} step={0.5}/>
                 <Text label="Chest / Bust" type="number" value={form.chestCm} onChange={(v) => update("chestCm", v)} min={1} max={200} step={0.5}/>
                 <Text label="Waist" type="number" value={form.waistCm} onChange={(v) => update("waistCm", v)} min={1} max={200} step={0.5}/>
